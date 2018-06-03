@@ -1,0 +1,2 @@
+from gym_collision_avoidance.envs.collision_env import CollisionEnv
+

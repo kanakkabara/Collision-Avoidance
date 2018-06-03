@@ -1,0 +1,8 @@
+<launch>
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="world_name" value="$(find collision_avoidance_gazebo)/worlds/avoidance.world"/>
+                <arg name="gui" value="false"/>
+        </include>
+        <param name="robot_description" command="$(find xacro)/xacro.py $(find rc_car_description)/urdf/rc_car.urdf.xacro" />
+        <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x 0 -y 0 -z 1 -model rc_car" />
+</launch>

@@ -1,0 +1,12 @@
+<launch>
+        <rosparam file="$(find collision_avoidance_gazebo_control)/config/rc_car_control.yaml" command="load"/>
+        <node name="controller_spawner" pkg="controller_manager"
+            type="spawner" respawn="false"
+            output="screen" ns="/rc_car"
+            args="left_rear_axle_controller right_rear_axle_controller
+                  left_steering_joint_controller right_steering_joint_controller
+                  joint_state_controller"/>
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+              <remap from="/joint_states" to="/rc_car/joint_states" />
+        </node>
+</launch>
